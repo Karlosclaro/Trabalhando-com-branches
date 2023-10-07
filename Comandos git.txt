@@ -1,0 +1,138 @@
+git config - configuraçoes
+git config --global user.name 	//definir nome do usuario (será q pode ser != do github?
+git config --global user.email 	// 		email 
+
+$ git config user.name //conferir o nome cadastrado
+$ git config user.email//conferir o email
+
+$ git config init.defaultBranch  // verificar branch padrao da instalacao
+$ git config --global init.defaultBranch main  // alterou o nome da branch para main e setou como --global, ou seja, para todas as configurações
+veja o site git-scm.com procurar livro
+$ git config --global --list //retorna todas as config feitas
+
+$ git config credential.helper cache//armazenar o token do git temporario na maquina 
+$ git config --global credential.helper store	//armazenar o token do git definitivo na maquina
+$ git config --global credential.helper //ver onde está armazenado as credenciais.
+$ git config --global --show-origin credential.helper // mostrar onde está no pc, armazenado as credenciais.
+
+$ cat .gitconfig //ver o conteudo escrito do arquivo gitconfig (tem que ver a pasta onde ele está armazenado conforme codigo anterior.
+
+$ cat .git-credentials //ver o token armazenado
+
+ls -a ~/.ssh //verificar se existe ssh instalada na maquina
+
+$ ssh-keygen -t ed25519 -C "carlosklaro@gmail.com" //criar chave ssh na maquina
+pass 52xmxk
+$ eval "$(ssh-agent -s)" //adicionar ssh agente 'gera um pid'
+$ ssh-add ~/.ssh/id_ed25519 adicionando o ssh
+
+$ cd ~/.ssh //mudar para a pasta da chave
+ls /para listar as chaves
+$ cat id_ed25519.pub / ver e copiar a chave armazenada para colar no github
+
+mkdir (nome da pasta) criar nova pasta no acesso local
+cd (nome da pasta) entrar na pasta
+git init iniciar git
+
+opc@KarlosWin MINGW64 ~/repo-local (main)
+$ cd .git 
+opc@KarlosWin MINGW64 ~/repo-local/.git (GIT_DIR!)
+$ ls
+HEAD  config  description  hooks/  info/  objects/  refs/
+
+opc@KarlosWin MINGW64 ~/repo-local/.git (GIT_DIR!)
+$ cat config
+[core]
+        repositoryformatversion = 0
+        filemode = false
+        bare = false
+        logallrefupdates = true
+        symlinks = false
+        ignorecase = true
+$ git clone git@github.com:Karlosclaro/Alo-Mundo.git repo-clonado (repo-clonado; nome alterado da pasta)
+Cloning into 'repo-clonado'...
+
+opc@KarlosWin MINGW64 ~/OneDrive - KarlosClaro/DEV/DIO Cursos/Git GitHub/repo-clonado/.git (GIT_DIR!)
+$ cat config
+[core]
+        repositoryformatversion = 0
+        filemode = false
+        bare = false
+        logallrefupdates = true
+        symlinks = false
+        ignorecase = true
+[remote "origin"]
+        url = git@github.com:Karlosclaro/Alo-Mundo.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+        remote = origin
+        merge = refs/heads/main
+opc@KarlosWin MINGW64 ~/OneDrive - KarlosClaro/DEV/DIO Cursos/Git GitHub/repo-clonado/.git (GIT_DIR!)
+$ git remote
+origin
+
+opc@KarlosWin MINGW64 ~/OneDrive - KarlosClaro/DEV/DIO Cursos/Git GitHub/repo-clonado/.git (GIT_DIR!)
+$ git remote -v
+origin  git@github.com:Karlosclaro/Alo-Mundo.git (fetch)
+origin  git@github.com:Karlosclaro/Alo-Mundo.git (push)
+
+opc@KarlosWin MINGW64 ~
+$ git remote add origin (adiciona uma pasta local no github)
+criou pasta
+git init (toda vez q criar pasta, tem iniciar esse comando)
+git remote add origin url(remota; pode criar um novo repositorio no github)
+
+Buscar (importar do github para a pasta)
+git clone URL + nome da pasta
+
+clonar so uma branch especifica
+git clone URL --branch feature-1(esse feature-1 é o nome da sua branch) --single-branch
+
+criar arquino no cmd
+touch README.md (criar um arquivo com esse nome)
+$ touch aulas/.gitkeep (.gitkeep [o git reconhecer pastas vazias)
+git status (mostrar os aquivos criados)
+
+https://readme.so/pt (editar arquivos md)
+
+$ git add README.md (adiciona arquivo depois de editado)
+git status
+
+$ git commit -m"comit inicial" (joga no github, o arquivo preparado)
+git log (mostra o histórico de commits, mensagens comitadas)
+
+$ touch Resumos/resumo-aula1.md (touch; cria arquivo pasta/nome do arquivo+extensao)
+
+$ echo > .gitignore (escreve e cria arquivo.gitignore)(nesse caso apaga conteudo escrito)
+ echo Resumos/ > .gitignore (escreve e cria arquivo.gitignore)
+
+rm -rf .git (remove pasta que foi colocada errada no github
+
+git restore +maisnome do arquivo (restaura arquivo apagado)
+
+git commit --amend -m "Adiciona gitignore e pastas aulas e resultados" (muda a mensagem do comit)
+git commit --amend (sem o -m, abre o editor; dai edita a mensagem. aperta ESQ para sair e o comando :wq
+
+git reset (reseta a mensagem atual do comit deixando a mensagem antiga)
+git reset --soft (mais hash do commit visto, no git log; tem que copiar a hash do comit q quer apagar)
+$ git reset --mixed 58e6d13c87b3c8beaa6bb71a5a0c49d4adfd44d4 (mixed funciona como o reset, nem precisaria ter colocado o mixed
+
+$ mkdir Resumos (criou pasta Resumos)
+$ touch Resumos/aula-01.md resumos/aula-02.md (criou arquivos aula01 e aula02 na pasta resumos)
+git pull origin master --allow-unrelated-histories (corrigiu esse erro)
+
+$ git reset Resumos/aula-01.md (serviu para desfazer/apagar o arquivo aula-01)
+$ git restore --staged Resumos/aula-02.md (serviu para desfazer/apagar o arquivo aula-02, essa é uma outra opcao)
+
+git pull (busca as alterações do repositorio remoto e atualiza para o repo local)
+
+
+
+
+
+
+
+
+
+
+
